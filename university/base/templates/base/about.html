@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About JNTU GV University</title> 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">   
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Body */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2C3E50, #34495E);
+            color: white;
+            padding-top: 150px; /* Prevent content from being hidden under the fixed header */
+        }
+        /* Header */
+        header {
+            background: #2C3E50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav {
+            background: #34495E;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        nav a:hover {
+            background: #E74C3C;
+        }
+        .content-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 50px 10%;
+        }
+        /* Sidebar */
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .sidebar h2, .sidebar h3 {
+            background: #E74C3C;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar h2::before, .sidebar h3::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: -100%;
+            transition: left 0.3s ease-in-out;
+        }
+
+        .sidebar h2:hover::before, .sidebar h3:hover::before {
+            left: 0;
+        }
+
+        .sidebar h2:hover, .sidebar h3:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.7);
+        }
+
+        /* Active Sidebar Item */
+        .sidebar h2.active, .sidebar h3.active {
+            background: #0073e6;
+            box-shadow: 0 4px 15px rgba(0, 115, 230, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* Sidebar Slide-in Animation */
+        .sidebar h2, .sidebar h3 {
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideIn 0.5s ease-in-out forwards;
+        }
+
+        .sidebar h2:nth-child(1) { animation-delay: 0.1s; }
+        .sidebar h3:nth-child(2) { animation-delay: 0.2s; }
+        .sidebar h3:nth-child(3) { animation-delay: 0.3s; }
+        .sidebar h3:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Content Sections */
+        .content {
+            flex: 3;
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            align-items:justify-content;
+        }
+
+        .content.show {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+            gap: 20px;
+        }
+
+        .content p {
+            text-align: justify;
+        }
+        
+
+        /* Image Styling */
+        .content img {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content.show {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content img {
+                width: 90%;
+                height: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- University Banner Above Navbar -->
+        <div style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+            <img src="https://tse4.mm.bing.net/th?id=OIP._KgEoeUCp0qBL0-lpgNXmQHaHi&pid=Api&P=0&h=180" 
+                 alt="JNTU GV Logo" 
+                 style="width: 80px; height: 80px; margin-right: 15px;">
+            <div>
+                <h2 style="margin: 0; font-size: 20px; text-align: center;">JAWAHARLAL NEHRU TECHNOLOGICAL UNIVERSITY GURAJADA VIZIANAGARAM</h2>
+                <p style="margin: 0; font-size: 14px; text-align: center;">VIZIANAGARAM-535 003, A.P</p>
+                <p style="margin: 0; font-size: 12px; text-align: center;">(Established by Andhra Pradesh Act No.22 of 2021)</p>
+            </div>
+        </div>
+    
+        <!-- Navigation Bar -->
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'internships' %}">Internships</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'account' %}">Account</a>
+        </nav>
+    </header>
+
+    <!-- Layout Container -->
+    <div class="content-container">
+        <!-- Sidebar with Headers -->
+        <div class="sidebar">
+            <h2 onclick="showContent('aboutContent')">About JNTU GV</h2>
+            <h3 onclick="showContent('campusContent')">Campus</h3>
+            <h3 onclick="showContent('departmentsContent')">Departments</h3>
+            <h3 onclick="showContent('admissionContent')">Admission</h3>
+        </div>
+
+        <!-- Content Sections -->
+        <div id="aboutContent" class="content show">
+            <h2>About JNTU GV University</h2>
+            <p>
+                The Jawaharlal Nehru Technological University-Gurajada, Vizianagaram (JNTU-GV) is a public university 
+                located in Vizianagaram, Andhra Pradesh. It was established on 12 January 2022. The university was 
+                named after Gurajada Apparao, a noted Indian playwright, dramatist, poet, and writer known for his 
+                works in Telugu theatre.
+            </p>
+            <img src="https://jntugv.edu.in/static/media/jntugvcev.b33bb43b07b2037ab043.jpg" alt="JNTU GV University">
+        </div>
+
+        <div id="campusContent" class="content">
+            <div class="content-container">
+                <div class="campus-text">
+                    <h2>Campus</h2>
+                    <p>
+                        The University is spread across an area of 80 acres (32 hectares) in Dwarapudi panchayat of Vizianagaram district.
+                        The territorial jurisdiction of the university comprises three erstwhile north coastal districts of Andhra Pradesh: 
+                        Visakhapatnam, Vizianagaram, and Srikakulam.
+                    </p>
+                </div>
+                <div class="campus-image">
+                    <img src="https://jntugvcev.edu.in/wp-content/uploads/2020/07/banner-2.jpg" alt="JNTU GV Campus">
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="departmentsContent" class="content">
+            <h2>Engineering Departments</h2>
+            <ul>
+                <li>Computer Science and Engineering</li>
+                <li>Civil Engineering</li>
+                <li>Electrical and Electronics Engineering</li>
+                <li>Electronics and Communications Engineering</li>
+                <li>Information Technology</li>
+                <li>Mechanical Engineering</li>
+                <li>Metallurgical Engineering</li>
+            </ul>
+             <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTEwL3JtNjA0YmF0Y2gyLWVsZW1lbnRncm91cDEtMThhLXRleHQuanBn.jpg" alt="Departments">        </div>
+
+        <div id="admissionContent" class="content">
+            <p>
+                Students are admitted into the undergraduate programs based on their score in the Engineering Agricultural and Pharmacy Common Entrance Test (EAPCET) conducted by the Government of Andhra Pradesh.
+
+                Students are admitted into postgraduate programs based on their Graduate Aptitude Test in Engineering (GATE) scores and rankings or their ranking in the Post Graduate Engineering Common Entrance Test (PGECET) conducted by the Government of Andhra Pradesh.
+                
+                
+            </p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLGEDu5qzBIoT7ECNGl7K8cpEf10wOJY6wVA&s" alt="Admissions">
+        </div>
+    </div>
+    
+    </div>
+
+    <script>
+        function showContent(sectionId) {
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('show'));
+            document.getElementById(sectionId).classList.add('show');
+        }
+        function showContent(sectionId) {
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('show'));
+            document.getElementById(sectionId).classList.add('show');
+    
+            // Remove active class from all sidebar items
+            document.querySelectorAll('.sidebar h2, .sidebar h3').forEach(item => item.classList.remove('active'));
+    
+            // Add active class to clicked item
+            event.target.classList.add('active');
+        }
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internships</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #2b5876, #4e4376);
+            color: #fff;
+            padding-top: 120px; /* Adjust for fixed header */
+        }
+
+        /* Header */
+        header {
+            background: #2C3E50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav {
+            background: #34495E;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        nav a:hover {
+            background: #E74C3C;
+        }
+        /* Section Styling */
+        .section {
+            padding: 50px 10%;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 10px;
+        }
+        h2 {
+            color: #f0f0f0;
+            margin-bottom: 20px;
+        }
+        
+        .internship-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* Adjust for smaller screens */
+        @media (max-width: 992px) {
+            .internship-list {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .internship-list {
+                grid-template-columns: repeat(1, 1fr); /* 1 column for mobile */
+            }
+        }
+        
+
+        .internship-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s, opacity 1s ease-in-out;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .internship-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .internship-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .internship-item h3 {
+            margin-bottom: 10px;
+            color: #ffdd57;
+        }
+
+        .internship-item p {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        /* Button Styles */
+        .course-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #ffdd57;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .course-btn:hover {
+            background: #ffbb33;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .internship-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .internship-item {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- University Banner Above Navbar -->
+        <div style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+            <img src="https://tse4.mm.bing.net/th?id=OIP._KgEoeUCp0qBL0-lpgNXmQHaHi&pid=Api&P=0&h=180" 
+                 alt="JNTU GV Logo" 
+                 style="width: 80px; height: 80px; margin-right: 15px;">
+            <div>
+                <h2 style="margin: 0; font-size: 20px; text-align: center;">JAWAHARLAL NEHRU TECHNOLOGICAL UNIVERSITY GURAJADA VIZIANAGARAM</h2>
+                <p style="margin: 0; font-size: 14px; text-align: center;">VIZIANAGARAM-535 003, A.P</p>
+                <p style="margin: 0; font-size: 12px; text-align: center;">(Established by Andhra Pradesh Act No.22 of 2021)</p>
+            </div>
+        </div>
+    
+        <!-- Existing Navigation Bar -->
+        <nav>
+            <a href="{% url 'home' %}" class="course-btn" onclick="addRipple(event)">Home</a>
+            <a href="{% url 'internships' %}" class="course-btn" onclick="addRipple(event)">Internships</a>
+            <a href="{% url 'about' %}" class="course-btn" onclick="addRipple(event)">About</a>
+            <a href="{% url 'account' %}" class="course-btn" onclick="addRipple(event)">Account</a>
+        </nav>
+      <!-- Search Bar (Updated) -->
+<div style="text-align: center; margin-top: 15px;">
+    <div id="searchContainer" style="display: inline-flex; align-items: center; gap: 10px;">
+        <!-- Search Icon -->
+        <span id="searchIcon" style="font-size: 20px; cursor: pointer;">🔍</span>
+
+        <!-- Hidden Input -->
+        <input type="text" id="searchBar" placeholder="Search internships..." 
+               style="display: none; background: transparent; border: none; border-bottom: 1px solid #ccc; 
+                      outline: none; color: white; font-size: 16px; padding: 5px 10px; width: 250px;">
+    </div>
+</div>
+
+            
+
+    </header>
+    
+   
+
+<section id="internships" class="section">
+    <h2>Available Online Internships</h2>
+    <div class="internship-list">
+        <div class="internship-item">
+            <img src="https://i.pinimg.com/736x/22/bc/8e/22bc8ebef610eb881071e1a7007a7a80.jpg" alt="Internship Thumbnail 1">
+            <h3>Web Development</h3>
+            <p>Learn to build websites and applications.</p>
+            <a href="{% url 'web-development' %}" class="course-btn">Go To Course</a>
+        </div>
+
+        <div class="internship-item">
+            <img src="https://i.pinimg.com/736x/6c/b6/d2/6cb6d231532f0eae13c35b8385ade4d9.jpg" alt="Internship Thumbnail 2">
+            <h3>Data Science</h3>
+            <p>Work with real data and analyze trends.</p>
+            <a href="{% url 'data-science' %}" class="course-btn">Go To Course</a>
+        </div>
+
+        <div class="internship-item">
+            <img src="https://i.pinimg.com/736x/14/cb/c1/14cbc10e848a3e5e794c11b57bf1ba3c.jpg" alt="Internship Thumbnail 3">
+            <h3>Artificial Intelligence</h3>
+            <p>Learn the art of Artificial Intelligence.</p>
+            <a href="{% url 'ai-internship' %}" class="course-btn">Go To Course</a>
+        </div>
+    </div>
+    <div class="internship-list">
+        <!-- Machine Learning -->
+        <div class="internship-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb_P94osOyQmImVhWXE_mHwr8YsvVMY4b2PA&s" alt="ML Internship Thumbnail">
+            <h3>Machine Learning</h3>
+            <p>Learn AI, data science, and machine learning models.</p>
+            <a href="{% url 'ml' %}" class="course-btn">Go To Course</a>
+        </div>
+    
+        <!-- C++ Development -->
+        <div class="internship-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS83EQ2Mjvdgj0POZKKsQQvuij9OxTBeCGtfQ&s" alt="C++ Internship Thumbnail">
+            <h3>C++ Development</h3>
+            <p>Master C++ programming and system development.</p>
+            <a href="{% url 'c++' %}" class="course-btn">Go To Course</a>
+        </div>
+    
+        <!-- Python Development -->
+        <div class="internship-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYZqZkpMyiN2uSuT7GAf6JSkJ44YsZqoQHdw&s" alt="Python Internship Thumbnail">
+            <h3>Python Development</h3>
+            <p>Master Python programming and automation.</p>
+            <a href="{% url 'python' %}" class="course-btn">Go To Course</a>
+        </div>
+    </div>
+    
+    <div class="internship-list">
+        <!-- Frontend Development -->
+        <div class="internship-item">
+            <img src="https://t3.ftcdn.net/jpg/02/92/88/72/360_F_292887204_2wH041phSQo70eqaE9GRqFvn5MmQ4B8w.jpg" alt="Frontend Development">
+            <h3>Frontend Development</h3>
+            <p>Learn HTML, CSS, JavaScript, and modern frontend frameworks.</p>
+            <a href="{% url 'front' %}" class="course-btn">Go To Course</a>
+        </div>
+    
+        <!-- Java Development -->
+        <div class="internship-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3S9FqOWEjqGZPQ98L55jzxu9OXbJqwXx_Gw&s" alt="Java Development">
+            <h3>Java Development</h3>
+            <p>Master Java programming, OOP concepts, and Spring framework.</p>
+            <a href="{% url 'java' %}" class="course-btn">Go To Course</a>
+        </div>
+    
+        <!-- TensorFlow -->
+        <div class="internship-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAlCQdXFBzSlWjkIuW7DaIMZFhBf3vcOgk9A&s" alt="Java Development">
+            <h3>TensorFlow</h3>
+            <p>Deep learning with TensorFlow for AI and ML applications.</p>
+            <a href="{% url 'tf' %}" class="course-btn">Go To Course</a>
+        </div>
+    
+        <!-- Prompt Engineering -->
+        <div class="internship-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD1AjFuHv6CN46wrfTcrcuKInYuibe_6yMEQ&s" alt="Prompt Engineering">
+            <h3>Prompt Engineering</h3>
+            <p>Learn to design AI prompts for better AI-generated responses.</p>
+            <a href="{% url 'prompt' %}" class="course-btn">Go To Course</a>
+        </div>
+    </div>
+    
+    
+</section>
+<script>
+    const searchIcon = document.getElementById('searchIcon');
+    const searchBar = document.getElementById('searchBar');
+    const internshipItems = document.querySelectorAll('.internship-item');
+
+    let expanded = false;
+
+    searchIcon.addEventListener('click', () => {
+        if (!expanded) {
+            searchBar.style.display = 'inline-block';
+            searchBar.focus();
+        } else {
+            searchBar.style.display = 'none';
+            searchBar.value = '';
+            internshipItems.forEach(item => item.style.display = 'block');
+        }
+        expanded = !expanded;
+    });
+
+    searchBar.addEventListener('input', function (e) {
+        const query = e.target.value.toLowerCase();
+
+        internshipItems.forEach(item => {
+            const title = item.querySelector('h3').textContent.toLowerCase();
+            const description = item.querySelector('p').textContent.toLowerCase();
+
+            if (title.includes(query) || description.includes(query)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+
+
+</body>
+
+   
+    
+</html>

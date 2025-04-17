@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Application Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #2C3E50;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            width: 380px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.8s ease-in-out;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 500;
+            color: white;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff7eb3;
+            color: white;
+            border: none;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff4e87;
+            transform: scale(1.05);
+        }
+
+        .error {
+            color: #ff4e87;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success {
+            text-align: center;
+            color: #32CD32;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Internship Application</h2>
+        <form id="internshipForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name">
+            <span class="error" id="nameError"></span>
+
+            <label for="college">College Name</label>
+            <input type="text" id="college" placeholder="Enter your college name">
+            <span class="error" id="collegeError"></span>
+
+            <label for="qualification">Qualification</label>
+            <input type="text" id="qualification" placeholder="Enter your qualification">
+            <span class="error" id="qualificationError"></span>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+            <span class="error" id="emailError"></span>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number">
+            <span class="error" id="phoneError"></span>
+
+            <label for="domain">Interested Domain</label>
+            <select id="domain">
+                <option value="">Select Domain</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="Web">Web Development</option>
+                <option value="Data">Data Science</option>
+            </select>
+            <span class="error" id="domainError"></span>
+
+            <button type="button" onclick="submitForm()">Submit Application</button>
+            <p class="success" id="successMessage"></p>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            let isValid = true;
+
+            let name = document.getElementById("name").value.trim();
+            let college = document.getElementById("college").value.trim();
+            let qualification = document.getElementById("qualification").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let domain = document.getElementById("domain").value;
+
+            document.getElementById("nameError").innerText = name ? "" : "Name is required";
+            document.getElementById("collegeError").innerText = college ? "" : "College name is required";
+            document.getElementById("qualificationError").innerText = qualification ? "" : "Qualification is required";
+            document.getElementById("emailError").innerText = email.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/) ? "" : "Enter a valid email";
+            document.getElementById("phoneError").innerText = phone.match(/^\d{10}$/) ? "" : "Enter a valid 10-digit phone number";
+            document.getElementById("domainError").innerText = domain ? "" : "Select an interested domain";
+
+            if (!name || !college || !qualification || !email.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/) || !phone.match(/^\d{10}$/) || !domain) {
+                isValid = false;
+            }
+
+            if (isValid) {
+                document.getElementById("successMessage").innerText = "🎉 Application Submitted Successfully!";
+                setTimeout(() => {
+                    document.getElementById("internshipForm").reset();
+                    document.getElementById("successMessage").innerText = "";
+                }, 3000);
+            }
+        }
+    </script>
+
+</body>
+</html>

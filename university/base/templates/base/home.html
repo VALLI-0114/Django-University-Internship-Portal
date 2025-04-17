@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Portal - JNTU GV College</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding-top: 120px; /* Adjust for fixed header */
+        }
+
+        header {
+            background: #2C3E50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        /* Navigation */
+        nav {
+            background: #34495E;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #E74C3C;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 40px;
+            margin: 20px auto;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 1200px; /* Increased from 900px */
+            width: 90%; /* Ensures responsiveness */
+            text-align: center;
+        }
+        
+
+        .section h2 {
+            font-size: 2.2rem;
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+
+        /* Home Section */
+        /* Increase the width of the home section */
+        #home {
+            max-width: 1200px; /* Increased from 900px */
+            width: 90%; /* Make it responsive */
+            margin: 0 auto; /* Keep it centered */
+            padding: 60px 40px; /* Adjust padding for better spacing */
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+
+        /* List Styling */
+        ul {
+            text-align: left;
+            display: inline-block;
+            margin: 20px auto;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            width: fit-content;
+        }
+
+        ul li {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "✔";
+            color: #E74C3C;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Image Gallery */
+        .home-images {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* Increased gap between images */
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .home-images img {
+            width: 250px; /* Increased width */
+            height: 250px; /* Increased height */
+            border-radius: 15px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .home-images img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .home-images img {
+                width: 180px; /* Adjust for smaller screens */
+                height: 180px;
+            }
+        }
+        
+        /* CTA Button */
+        .start-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 15px;
+            text-decoration: none;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 81, 47, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin: 5px;
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+
+            .home-images img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- University Banner Above Navbar -->
+        <div style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+            <img src="https://tse4.mm.bing.net/th?id=OIP._KgEoeUCp0qBL0-lpgNXmQHaHi&pid=Api&P=0&h=180" 
+                 alt="JNTU GV Logo" 
+                 style="width: 80px; height: 80px; margin-right: 15px;">
+            <div>
+                <h2 style="margin: 0; font-size: 20px; text-align: center;">JAWAHARLAL NEHRU TECHNOLOGICAL UNIVERSITY GURAJADA VIZIANAGARAM</h2>
+                <p style="margin: 0; font-size: 14px; text-align: center;">VIZIANAGARAM-535 003, A.P</p>
+                <p style="margin: 0; font-size: 12px; text-align: center;">(Established by Andhra Pradesh Act No.22 of 2021)</p>
+            </div>
+        </div>
+    
+        <!-- Existing Navigation Bar -->
+        <nav>
+            <a href="{% url 'home' %}" class="course-btn" onclick="addRipple(event)">Home</a>
+            <a href="{% url 'internships' %}" class="course-btn" onclick="addRipple(event)">Internships</a>
+            <a href="{% url 'about' %}" class="course-btn" onclick="addRipple(event)">About</a>
+            <a href="{% url 'account' %}" class="course-btn" onclick="addRipple(event)">Account</a>
+        </nav>
+    </header>
+    
+
+<section id="home" class="section">
+    <h2>JNTU GV College Online Internships – Unlock Your Future!</h2>
+
+    <div class="home-images">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.lZZr6dW7qSNgiL7YOqvOLgHaCU&pid=Api&P=0&h=180" alt="Internship 1">
+        <img src="https://jntugv.netlify.app/static/media/gal25.7ef54816bb0207987a98.jpg" alt="Internship 2">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/3d/67/bb/jawaharlal-nehru-statue.jpg?w=1200&h=1200&s=1" alt="Internship 3">
+    </div>
+
+    <p>
+        <strong>Jawaharlal Nehru Technological University Gurajada Vizianagaram (JNTU GV)</strong> offers a wide range of **online internships** 
+        designed to bridge the gap between academic learning and real-world industry needs.
+    </p>
+
+    <h3>Why Choose JNTU GV Online Internships?</h3>
+    <ul>
+        <li>Hands-on experience with real-world projects.</li>
+        <li>Guidance from industry professionals.</li>
+        <li>Enhance your resume with practical skills.</li>
+        <li>Earn industry-recognized certifications.</li>
+    </ul>
+
+    <p style="text-align: center; margin-top: 20px;">
+        🚀 <strong>Start your internship today and take the first step toward a successful career!</strong> 🚀
+    </p>
+
+    <!-- Apply Now Button -->
+    <a href="{% url 'application' %}" class="start-btn" style="display: block; margin: 30px auto;">
+        Apply Now
+    </a>
+
+</section>
+
+</body>
+</html>

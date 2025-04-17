@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Section</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+                background: linear-gradient(135deg, #34495E, #2a5298);
+                color: white;
+            text-align: center;
+            padding-top: 140px; /* Adjust for fixed header */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        /* Header */
+        header {
+            background: #2C3E50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* Header Flexbox Layout */
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .header-content img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
+        .header-text h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .header-text p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #34495E;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            position: fixed;
+            top: 105px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #E74C3C;
+        }
+
+        /* Account Section */
+        #account {
+            max-width: 400px;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        /* Form Styling */
+        .account-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .account-form input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid white;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .account-form input:focus {
+            border-color: #E74C3C;
+            box-shadow: 0px 0px 10px #E74C3C;
+        }
+
+        .account-form button {
+            padding: 12px;
+            background: linear-gradient(90deg, #ff4e50, #f9d423);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .account-form button:hover {
+            background: linear-gradient(90deg, #f9d423, #ff4e50);
+            transform: scale(1.05);
+        }
+
+        /* Profile Display */
+        .profile {
+            display: none;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .profile img:hover {
+            transform: scale(1.1);
+        }
+
+        .logout-btn {
+            padding: 12px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: darkred;
+            transform: scale(1.1);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin: 5px;
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+        }
+        </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="https://tse4.mm.bing.net/th?id=OIP._KgEoeUCp0qBL0-lpgNXmQHaHi&pid=Api&P=0&h=180" alt="JNTU GV Logo">
+            <div class="header-text">
+                <h2>JAWAHARLAL NEHRU TECHNOLOGICAL UNIVERSITY GURAJADA VIZIANAGARAM</h2>
+                <p>VIZIANAGARAM-535 003, A.P</p>
+                <p>(Established by Andhra Pradesh Act No.22 of 2021)</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'internships' %}">Internships</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'account' %}">Account</a>
+    </nav>
+
+    <section id="account">
+        <h2>Account</h2>
+
+        <!-- Login / Signup Form -->
+        <div class="account-form" id="authForm">
+            <input type="file" id="profilePic" accept="image/*">
+            <input type="text" id="name" placeholder="Full Name (Only for Signup)">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <input type="text" id="phone" placeholder="Phone Number (Only for Signup)">
+            <input type="text" id="address" placeholder="Address (Only for Signup)">
+            <button onclick="handleAuth()">Login / Sign Up</button>
+            <p id="toggleText">Don't have an account? <a href="#" onclick="toggleAuthMode()">Sign Up</a></p>
+        </div>
+
+        <!-- Profile Display -->
+        <div class="profile" id="userProfile">
+            <img id="profileImage" src="https://via.placeholder.com/120" alt="Profile Picture">
+            <h3 id="userName"></h3>
+            <p><strong>Email:</strong> <span id="userEmail"></span></p>
+            <p><strong>Phone:</strong> <span id="userPhone"></span></p>
+            <p><strong>Address:</strong> <span id="userAddress"></span></p>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </section>
+    <script>
+        let isSignUp = false;
+        let users = JSON.parse(localStorage.getItem("users")) || {};
+    
+        function toggleAuthMode() {
+            isSignUp = !isSignUp;
+            document.getElementById("name").style.display = isSignUp ? "block" : "none";
+            document.getElementById("phone").style.display = isSignUp ? "block" : "none";
+            document.getElementById("address").style.display = isSignUp ? "block" : "none";
+            document.getElementById("toggleText").innerHTML = isSignUp ? 
+                `Already have an account? <a href="#" onclick="toggleAuthMode()">Login</a>` : 
+                `Don't have an account? <a href="#" onclick="toggleAuthMode()">Sign Up</a>`;
+        }
+    
+        function handleAuth() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+    
+            if (isSignUp) {
+                let name = document.getElementById("name").value;
+                let phone = document.getElementById("phone").value;
+                let address = document.getElementById("address").value;
+                let profilePic = document.getElementById("profilePic").files[0];
+    
+                if (!name || !email || !password || !phone || !address) {
+                    alert("All fields are required!");
+                    return;
+                }
+    
+                if (users[email]) {
+                    alert("User already exists. Please login.");
+                    return;
+                }
+    
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    users[email] = { name, email, password, phone, address, profilePic: e.target.result };
+                    localStorage.setItem("users", JSON.stringify(users));
+                    alert("Signup successful! Please log in.");
+                    toggleAuthMode();
+                };
+                if (profilePic) {
+                    reader.readAsDataURL(profilePic);
+                } else {
+                    users[email] = { name, email, password, phone, address, profilePic: "https://via.placeholder.com/120" };
+                    localStorage.setItem("users", JSON.stringify(users));
+                    alert("Signup successful! Please log in.");
+                    toggleAuthMode();
+                }
+            } else {
+                if (!users[email] || users[email].password !== password) {
+                    alert("Invalid email or password!");
+                    return;
+                }
+                localStorage.setItem("loggedInUser", email);
+                showProfile(users[email]);
+            }
+        }
+    
+        function showProfile(user) {
+            document.getElementById("authForm").style.display = "none";
+            document.getElementById("userProfile").style.display = "block";
+            document.getElementById("profileImage").src = user.profilePic;
+            document.getElementById("userName").innerText = user.name;
+            document.getElementById("userEmail").innerText = user.email;
+            document.getElementById("userPhone").innerText = user.phone;
+            document.getElementById("userAddress").innerText = user.address;
+        }
+    
+        function logout() {
+            localStorage.removeItem("loggedInUser");
+            document.getElementById("authForm").style.display = "block";
+            document.getElementById("userProfile").style.display = "none";
+        }
+    
+        window.onload = function () {
+            let loggedInUser = localStorage.getItem("loggedInUser");
+            if (loggedInUser && users[loggedInUser]) {
+                showProfile(users[loggedInUser]);
+            }
+        };
+    </script>
+    
+</body>
+</html>
